@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craftdle</title>
+    <link rel="icon" type="'image/x-icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="https://fontlibrary.org//face/minecraftia" type="text/css"/> 
+    <link rel="stylesheet" type="text/css" href="craftdle.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <script src="./craftdle.js"> </script>
+</head>
+<body>
+    <header class="title">
+        <table><tr>
+            <td><h1>
+                CRAFTDLE
+            </h1></td>
+            <td>
+                <button class='RecipesPageButton PageButton' onclick="{window.location = './craftingRecipes.html';}"></button>
+                <a id="recipeBookPage" href="./craftingRecipes.html"></a>
+            </td>
+        </tr></table>
+    </header>
+    <br>
+    <script>initLocalStorage();</script>
+    <div id="craftingTable">
+        <table class="craftingTable" id="mainCraftingTable">
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <div id="selection">
+        <table>
+            <tr>
+                <td id="selectionImg"></td>
+                <td>
+                    <datalist id="itemOptions"></datalist>
+                    <input type="text" list="itemOptions" id="itemSelection" oninput="selectItem()" placeholder="Choisissez un objet"></input>
+                    <script>
+                        initItemOptions();
+                        initCurrentItem();
+                    </script>
+                </td>
+                <td>
+                    <button onclick="craftButton()" id="craftButton">CRAFT !</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="errorMessage"></div>
+    <br>
+    <table id="propositions"></table>
+    <script>reloadPropositions();</script>
+</body>
+</html>

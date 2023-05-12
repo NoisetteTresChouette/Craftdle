@@ -1,0 +1,146 @@
+body {
+    background-color: #666;
+}
+
+.title,th {
+    text-align: center;
+    background-color: #333;
+}
+
+header table{
+    margin: auto;    
+}
+
+h1 {
+    font-family: "MinecraftiaRegular";
+    font-weight: normal;
+    font-style: normal; 
+}
+
+.craftingTable{
+    border-color: #999;
+    border-width: 30px;
+    border-style: solid;
+}
+
+#mainCraftingTable {
+    margin: auto;
+}
+
+.craftingTable td {
+    text-align: center;
+    width: 34px;
+    height: 34px;
+    border-color: #999;
+    border-width: 1px;
+    border-style: solid;
+    font-family: "MinecraftiaRegular";
+    font-weight: normal;
+    font-style: normal;
+}
+
+#mainCraftingTable td{
+    background: url("./img/craft_background.png");
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.orange {
+    background-color: orange;
+}
+
+.orangered {
+    background-color: orangered;
+}
+
+#selection table {
+    margin: auto;
+    font-family: "MinecraftiaRegular";
+    font-weight: normal;
+    font-style: normal; 
+}
+
+#itemSelection,#craftButton{
+    font-family: "MinecraftiaRegular";
+    font-weight: normal;
+    font-style: normal; 
+    display: flex;
+    margin:auto;
+}
+
+button {
+    background-color: #999;
+    cursor: pointer;
+}
+
+#errorMessage {
+    font-family: "MinecraftiaRegular";
+    font-weight: normal;
+    font-style: normal; 
+    text-align: center;
+}
+
+.proposition{
+    font-family: "MinecraftiaRegular";
+    font-weight: normal;
+    font-style: normal;
+    text-align: center;
+}
+
+#propositions{
+    margin: auto;
+}
+
+.specialBloc {
+    background: url("./img/specialBloc.png");
+}
+
+.specialItem1 {
+    background: url("./img/specialItem1.png");
+}
+
+.specialItem2 {
+    background: url("./img/specialItem2.png");
+}
+
+img {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    margin: auto;
+}
+
+tr.even {
+    background-color: #57ad56;
+}
+
+#recipes {
+    font-family: "MinecraftiaRegular";
+    font-weight: normal;
+    font-style: normal; 
+    margin: auto;
+}
+
+.RecipesPageButton {
+    background-image: url('./img/recipeBook.png'); 
+}
+
+.MainPageButton {
+    background-image: url('./img/logo.png'); 
+}
+
+.PageButton {
+    background-size: cover;
+    width:32px; 
+    height:32px
+}

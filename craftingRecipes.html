@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craftdle Recipe Book</title>
+    <link rel="icon" type="'image/x-icon" href="./img/favicon.ico">
+    <link rel="stylesheet" href="https://fontlibrary.org//face/minecraftia" type="text/css"/> 
+    <link rel="stylesheet" type="text/css" href="craftdle.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <script src="./craftdle.js"> </script>
+</head>
+<body>
+    <header class="title">
+        <table><tr>
+            <td><h1>
+                CRAFTDLE
+            </h1></td>
+            <td>
+                <button class='MainPageButton PageButton' onclick="{window.location = './craftdle.html';}"></button>
+                <a id="recipeBookPage" href="./craftingRecipes.html"></a>
+            </td>
+        </tr></table>
+    </header>
+    <table id="recipes">
+        <tr>
+            <th>Image</th>
+            <th>Nom</th>
+            <th>Ingrédients</th>
+            <th>Recette</th>
+        </tr>
+    </table>
+    <script>
+        var htmlContent = document.getElementById('recipes').innerHTML;
+        var rowParity = 'odd';
+        for (item of craftableItems){
+            var rowParity = rowParity=='even' ? 'odd' : 'even';
+            var itemData = items[item];
+            var showImg = generateImg(item);
+            var showName = itemData['name'];
+            var recipe= itemData['recipe'];
+            var ingredients = [];
+            var showIngredients = "<table>";
+            var showRecipe = '<table class="craftingTable">';
+            for (var i =0; i<3; i++){
+                showRecipe += '<tr>';
+                for (var j=0; j<3; j++){
+                    var ingredient = recipe[3*i+j];
+                    showRecipe += `<td style='background: url("./img/craft_background.png");'>${generateImg(simplifyStr(ingredient))}</td>`;
+                    if (! ingredients.includes(ingredient) && ingredient != null){
+                        showIngredients += `<tr><td>${ingredient}</td><td>${generateImg(simplifyStr(ingredient))}</td></tr>`;
+                        ingredients.push(ingredient);
+                    }
+                }
+                showRecipe += '</tr>';
+            }
+            showIngredients += '</table>';
+            showRecipe += '</table>';
+            htmlContent += `<tr class="${rowParity}"><td>${showImg}</td><td>${showName}</td><td>${showIngredients}</td><td>${showRecipe}</td></tr>`;
+        }
+        document.getElementById('recipes').innerHTML = htmlContent;
+    </script>
+</body>
+</html>

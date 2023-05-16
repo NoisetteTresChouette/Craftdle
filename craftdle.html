@@ -18,13 +18,96 @@
                 CRAFTDLE
             </h1></td>
             <td>
-                <button class='RecipesPageButton PageButton' onclick="{window.location = './craftingRecipes.html';}"></button>
-                <a id="recipeBookPage" href="./craftingRecipes.html"></a>
+                <button class='RecipesPageButton PageButton' onclick="window.open('./craftingRecipes.html')"></button>
+            </td>
+            <td>
+                <button class="RulesButton PageButton" onclick="switchRules()">?</button>
             </td>
         </tr></table>
+        <div id="rules" style="display: none;">
+            <button id="quitExampleButton" onclick="switchRules()">X</button>
+            <p>
+                Les règles de ce jeu sont ispirées de celles du Worlde.<br>
+                Votre objectif est de retrouver l'objet du jour.<br>
+                Pour ce faire, vous devez proposer des réponses.<br>
+            </p>
+            <input type="text" id="exempleInput" value="Bouclier" onmouseenter="{this.disabled=true}" onmouseleave="{this.disabled=false}">
+            <script>
+                document.getElementById('exempleInput').value = "Bouclier";//la value ne s'inntialise pas si je ne fais pas ça
+            </script>
+            <p>La recette de votre proposition apparaîtra.<br></p>
+            <table class="craftingTable" id="exampleCraftingTable">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <p>
+                Cliquez sur CRAFT !<br>
+                <br>
+                Votre recette sera alors comparée à celle de l'objet secret.<br>
+            </p>
+            <table class="craftingTable" id="exampleProposition">
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </table>
+            <p>
+                Si un ingrédient est surligné en <span class="red">rouge</span>, alors c'est qu'il n'apparaît pas dans la recette secrette.<br>
+                Quand il est <span class="yellow">jaune</span>, l'ingrédient est dans la recette secrette, mais pas à la même position.<br>
+                Enfin, en <span class="green">vert</span>, l'ingrédient trouvé est dans la recette, et la position est correcte.<br>
+                <br>
+                Dans cet exemple, l'objet secret était :
+            </p>
+            <div id="exempleSolution" id="exampleSolution"></div>
+            <p>
+                Bonne chance pour craft le bon objet !<br>
+            </p>
+            <script> setExample()</script>
+        </div>
     </header>
     <br>
     <script>initLocalStorage();</script>
+    <div id="yesterdayAnswer">
+        <table><tr>
+            <td>L'objet d'hier était:</td>
+            <td id="yesterdayItemImg"></td>
+            <td id="yesterdayItemName"></td>
+        </tr></table>
+    </div>
+    <script>
+        var yesterday = new Date();
+        yesterday.setDate(yesterday.getDate()-1);
+        yesterday = yesterday.toJSON().slice(0,10);
+        var oldRng = new Math.seedrandom(yesterday);
+        var oldItem = craftableItems[Math.floor((oldRng() * craftableItems.length))];
+        document.getElementById("yesterdayItemImg").innerHTML = generateImg(oldItem);
+        document.getElementById("yesterdayItemName").innerText = items[oldItem]['name'];
+    </script>
+    <br>
     <div id="craftingTable">
         <table class="craftingTable" id="mainCraftingTable">
             <tr>
@@ -51,7 +134,7 @@
                 <td id="selectionImg"></td>
                 <td>
                     <datalist id="itemOptions"></datalist>
-                    <input type="text" list="itemOptions" id="itemSelection" oninput="selectItem()" placeholder="Choisissez un objet"></input>
+                    <input type="text" list="itemOptions" id="itemSelection" oninput="selectItem()" placeholder="Choisissez un objet">
                     <script>
                         initItemOptions();
                         initCurrentItem();

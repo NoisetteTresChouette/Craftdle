@@ -2,9 +2,14 @@ body {
     background-color: #666;
 }
 
+.title {
+    background-color: #333;
+    position: sticky;
+    top: 0;
+}
+
 .title,th {
     text-align: center;
-    background-color: #333;
 }
 
 header table{
@@ -39,7 +44,7 @@ h1 {
     font-style: normal;
 }
 
-#mainCraftingTable td{
+#mainCraftingTable td, #exampleCraftingTable td, #exampleSolution td{
     background: url("./img/craft_background.png");
 }
 
@@ -83,7 +88,7 @@ button {
     cursor: pointer;
 }
 
-#errorMessage {
+#errorMessage, .RulesButton{
     font-family: "MinecraftiaRegular";
     font-weight: normal;
     font-style: normal; 
@@ -143,4 +148,44 @@ tr.even {
     background-size: cover;
     width:32px; 
     height:32px
+}
+
+#yesterdayAnswer {
+    font-family: "MinecraftiaRegular";
+    font-weight: normal;
+    font-style: normal; 
+    display: flex;
+    justify-content: center;
+}
+
+#rules {
+    display: none;
+    position: absolute;
+    right: 15%;
+    width: 70%;
+    height: 420px;
+    background-color: #666;
+    border-width: 1px;
+    border-style: solid;
+    border-color: black;
+    font-family: "MinecraftiaRegular";
+    font-weight: normal;
+    font-style: normal;
+    text-align: left;
+    overflow-y: scroll;
+}
+
+#rules input {
+    display: flex;
+    margin: auto;
+}
+
+#quitExampleButton {
+    display: flex;
+    margin-left: 93%;
+    margin-top: 2%;
+    background-color: #f20;
+    font-family: "MinecraftiaRegular";
+    font-weight: normal;
+    font-style: normal;
 }
